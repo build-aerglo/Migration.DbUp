@@ -16,6 +16,8 @@
       <EmbeddedResource Include="Scripts\003_create_business_tables.sql" />
       <None Remove="Scripts\004_seed_data.sql" />
       <EmbeddedResource Include="Scripts\004_seed_data.sql" />
+      <None Remove="Scripts\004_create_review_tables.sql" />
+      <EmbeddedResource Include="Scripts\004_create_review_tables.sql" />
     </ItemGroup>
 
     <ItemGroup>

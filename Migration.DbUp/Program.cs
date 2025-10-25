@@ -1,12 +1,14 @@
-﻿using DbUp;
-using System.Reflection;
+﻿using System.Reflection;
+using DbUp;
 
-class Program
+namespace Migration.DbUp;
+
+internal abstract class Program
 {
     static int Main(string[] args)
     {
         var connectionString = args.FirstOrDefault()
-                               ?? "Host=localhost;Database=clereview;Username=dily;Password=password1";
+                               ?? "Host=localhost;Database=testdb;Username=dily;Password=password1";
 
         var upgrader = DeployChanges.To
             .PostgresqlDatabase(connectionString)
