@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Remove="Scripts\001_enable_extensions_and_functions.sql" />
+      <EmbeddedResource Include="Scripts\001_enable_extensions_and_functions.sql" />
+      <None Remove="Scripts\002_create_user_tables.sql" />
+      <EmbeddedResource Include="Scripts\002_create_user_tables.sql" />
+      <None Remove="Scripts\003_create_business_tables.sql" />
+      <EmbeddedResource Include="Scripts\003_create_business_tables.sql" />
+      <None Remove="Scripts\004_seed_data.sql" />
+      <EmbeddedResource Include="Scripts\004_seed_data.sql" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="dbup-postgresql" Version="6.0.3" />
+    </ItemGroup>
+
+</Project>
