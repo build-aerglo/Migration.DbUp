@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS public.review (
     CONSTRAINT fk_review_location FOREIGN KEY (location_id)
     REFERENCES public.location (id) ON DELETE SET NULL,
     CONSTRAINT fk_review_user FOREIGN KEY (reviewer_id)
-    REFERENCES public.user (id) ON DELETE SET NULL,
+    REFERENCES public.users (id) ON DELETE SET NULL,
     CONSTRAINT chk_photo_limit CHECK (array_length(photo_urls, 1) <= 3)
     );
 
