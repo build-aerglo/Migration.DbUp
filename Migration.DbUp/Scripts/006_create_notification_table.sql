@@ -9,4 +9,4 @@ CREATE TABLE IF NOT EXISTS notification (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
 
-ALTER TABLE users ADD COLUMN auth0_user_id VARCHAR(200);
+ALTER TABLE users ADD COLUMN auth0_user_id varchar(200);
