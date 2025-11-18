@@ -23,6 +23,8 @@
       <EmbeddedResource Include="Scripts\007_create_user_settings_tables.sql" />
       <None Remove="Scripts\006_11_5_2025_8_29_business_settings_table.sql" />
       <EmbeddedResource Include="Scripts\006_11_5_2025_8_29_business_settings_table.sql" />
+      <None Remove="Scripts\008_11_17_add_review_validation_columns.sql" />
+      <EmbeddedResource Include="Scripts\008_11_17_add_review_validation_columns.sql" />
     </ItemGroup>
 
     <ItemGroup>
