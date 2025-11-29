@@ -23,6 +23,11 @@
       <EmbeddedResource Include="Scripts\007_create_user_settings_tables.sql" />
       <None Remove="Scripts\006_11_5_2025_8_29_business_settings_table.sql" />
       <EmbeddedResource Include="Scripts\006_11_5_2025_8_29_business_settings_table.sql" />
+      <None Remove="Scripts\008_create_categories.sql" />
+      <EmbeddedResource Include="Scripts\008_create_categories.sql" />
+      <None Remove="Scripts\009_create_tags.sql" />
+      <EmbeddedResource Include="Scripts\009_create_tags.sql" />
+      <None Remove="Scripts\010_add_more_tags.sql" />
     </ItemGroup>
 
     <ItemGroup>
