@@ -5,7 +5,7 @@ namespace Migration.DbUp;
 
 internal abstract class Program
 {
-    static int Main(string[] args)
+    static int Main(string[] args) 
     {
         var connectionString = args.FirstOrDefault()
                                ?? "Host=localhost;Port=5432;Database=ReviewApp;Username=postgres;Password=admin";
