@@ -26,6 +26,8 @@
       <None Remove="Scripts\008_create_categories.sql" />
       <None Remove="Scripts\009_create_tags.sql" />
       <None Remove="Scripts\010_add_more_tags.sql" />
+      <None Remove="Scripts\009_create_business_social_and_tags_tables.sql" />
+      <EmbeddedResource Include="Scripts\009_create_business_social_and_tags_tables.sql" />
     </ItemGroup>
 
     <ItemGroup>
