@@ -9,7 +9,7 @@
 CREATE TABLE IF NOT EXISTS public.category_tags (
                                                     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(100) NOT NULL UNIQUE,
-    category_id UUID,
+    category_id UUID NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
     CONSTRAINT fk_category_id FOREIGN KEY (category_id)
