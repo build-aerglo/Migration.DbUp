@@ -5,10 +5,10 @@ namespace Migration.DbUp;
 
 internal abstract class Program
 {
-    static int Main(string[] args)
+    static int Main(string[] args) 
     {
         var connectionString = args.FirstOrDefault()
-                               ?? "Host=localhost;Database=reviewapp;Username=prnzdiamond;Password=diamond";
+                               ?? "Host=localhost;Port=5432;Database=ReviewApp;Username=postgres;Password=admin";
 
         var upgrader = DeployChanges.To
             .PostgresqlDatabase(connectionString)
