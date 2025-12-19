@@ -25,6 +25,11 @@
       <EmbeddedResource Include="Scripts\006_11_5_2025_8_29_business_settings_table.sql" />
       <None Remove="Scripts\008_11_17_add_review_validation_columns.sql" />
       <EmbeddedResource Include="Scripts\008_11_17_add_review_validation_columns.sql" />
+      <None Remove="Scripts\008_create_categories.sql" />
+      <None Remove="Scripts\009_create_tags.sql" />
+      <None Remove="Scripts\010_add_more_tags.sql" />
+      <None Remove="Scripts\009_create_business_social_and_tags_tables.sql" />
+      <EmbeddedResource Include="Scripts\009_create_business_social_and_tags_tables.sql" />
     </ItemGroup>
 
     <ItemGroup>
