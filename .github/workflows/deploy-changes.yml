@@ -1,0 +1,28 @@
+name: Run DB Migrations
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release
+
+      - name: Run migrations
+        run: dotnet run --project Migration.DbUp/Migration.DbUp.csproj -- "Host=ep-solitary-fire-afiwyxwa-pooler.c-2.us-west-2.aws.neon.tech;Database=neondb;Username=neondb_owner;Password=npg_7CZd9OgaYmWj;SSL Mode=Require;Trust Server Certificate=True"
