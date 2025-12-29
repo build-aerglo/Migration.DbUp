@@ -31,6 +31,12 @@
       <None Remove="Scripts\009_create_business_social_and_tags_tables.sql" />
       <EmbeddedResource Include="Scripts\009_create_business_social_and_tags_tables.sql" />
       <None Remove="Scripts\010_create_business_claims_table.sql" />
+      <None Remove="Scripts\011_Create_Social_Identities_Table.sql" />
+      <EmbeddedResource Include="Scripts\011_Create_Social_Identities_Table.sql" />
+      <None Remove="Scripts\010_create_business_claims.sql" />
+      <EmbeddedResource Include="Scripts\010_create_business_claims.sql" />
+      <None Remove="Scripts\010_add_is_guest_review_column.sql" />
+      <EmbeddedResource Include="Scripts\010_add_is_guest_review_column.sql" />
     </ItemGroup>
 
     <ItemGroup>
