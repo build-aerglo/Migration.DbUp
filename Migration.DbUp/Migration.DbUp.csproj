@@ -41,6 +41,8 @@
       <EmbeddedResource Include="Scripts\012_Badge_Point_Verification_Point_Geolocation.sql" />
       <None Remove="Scripts\013_SeedData_Badge_Point_Verification_Point_Geolocation.sql" />
       <EmbeddedResource Include="Scripts\013_SeedData_Badge_Point_Verification_Point_Geolocation.sql" />
+      <None Remove="Scripts\014_business_service_tables.sql" />
+      <EmbeddedResource Include="Scripts\014_business_service_tables.sql" />
     </ItemGroup>
 
     <ItemGroup>
