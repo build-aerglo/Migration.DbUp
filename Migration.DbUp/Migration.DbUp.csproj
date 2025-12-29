@@ -37,6 +37,10 @@
       <EmbeddedResource Include="Scripts\010_create_business_claims.sql" />
       <None Remove="Scripts\010_add_is_guest_review_column.sql" />
       <EmbeddedResource Include="Scripts\010_add_is_guest_review_column.sql" />
+      <None Remove="Scripts\012_Badge_Point_Verification_Point_Geolocation.sql" />
+      <EmbeddedResource Include="Scripts\012_Badge_Point_Verification_Point_Geolocation.sql" />
+      <None Remove="Scripts\013_SeedData_Badge_Point_Verification_Point_Geolocation.sql" />
+      <EmbeddedResource Include="Scripts\013_SeedData_Badge_Point_Verification_Point_Geolocation.sql" />
     </ItemGroup>
 
     <ItemGroup>
