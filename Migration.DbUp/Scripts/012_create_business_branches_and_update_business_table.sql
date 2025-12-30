@@ -22,4 +22,4 @@ ALTER TABLE public.business
     ADD COLUMN IF NOT EXISTS business_state TEXT;
 
 ALTER TABLE public.business
-    ADD COLUMN IF NOT EXISTS review_summary TEXT;
+    ADD COLUMN IF NOT EXISTS review_summary TEXT; 
