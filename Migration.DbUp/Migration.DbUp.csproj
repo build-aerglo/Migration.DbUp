@@ -37,6 +37,8 @@
       <EmbeddedResource Include="Scripts\010_create_business_claims.sql" />
       <None Remove="Scripts\010_add_is_guest_review_column.sql" />
       <EmbeddedResource Include="Scripts\010_add_is_guest_review_column.sql" />
+      <None Remove="Scripts\012_create_business_branches_and_update_business_table.sql" />
+      <EmbeddedResource Include="Scripts\012_create_business_branches_and_update_business_table.sql" />
     </ItemGroup>
 
     <ItemGroup>
