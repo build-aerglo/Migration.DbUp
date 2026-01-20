@@ -32,19 +32,37 @@
       <EmbeddedResource Include="Scripts\009_create_business_social_and_tags_tables.sql" />
       <None Remove="Scripts\010_create_business_claims_table.sql" />
       <None Remove="Scripts\011_Create_Social_Identities_Table.sql" />
-      <EmbeddedResource Include="Scripts\011_Create_Social_Identities_Table.sql" />
       <None Remove="Scripts\010_create_business_claims.sql" />
-      <EmbeddedResource Include="Scripts\010_create_business_claims.sql" />
       <None Remove="Scripts\010_add_is_guest_review_column.sql" />
       <EmbeddedResource Include="Scripts\010_add_is_guest_review_column.sql" />
       <None Remove="Scripts\012_Badge_Point_Verification_Point_Geolocation.sql" />
-      <EmbeddedResource Include="Scripts\012_Badge_Point_Verification_Point_Geolocation.sql" />
       <None Remove="Scripts\013_SeedData_Badge_Point_Verification_Point_Geolocation.sql" />
-      <EmbeddedResource Include="Scripts\013_SeedData_Badge_Point_Verification_Point_Geolocation.sql" />
       <None Remove="Scripts\014_business_service_tables.sql" />
-      <EmbeddedResource Include="Scripts\014_business_service_tables.sql" />
       <None Remove="Scripts\015_add_business_branches.sql" />
-      <EmbeddedResource Include="Scripts\015_add_business_branches.sql" />
+      <None Remove="Scripts\016_add_last_login_and_point_tables.sql" />
+      <None Remove="Scripts\017_update_review_schema_for_branches.sql" />
+      <None Remove="Scripts\019_enhance_review_table.sql" />
+      <EmbeddedResource Include="Scripts\019_enhance_review_table.sql" />
+      <None Remove="Scripts\020_create_business_reply_system.sql" />
+      <EmbeddedResource Include="Scripts\020_create_business_reply_system.sql" />
+      <None Remove="Scripts\021_create_dispute_management.sql" />
+      <EmbeddedResource Include="Scripts\021_create_dispute_management.sql" />
+      <None Remove="Scripts\022_create_bayesian_rating_system.sql" />
+      <EmbeddedResource Include="Scripts\022_create_bayesian_rating_system.sql" />
+      <None Remove="Scripts\023_create_helpful_vote_system.sql" />
+      <EmbeddedResource Include="Scripts\023_create_helpful_vote_system.sql" />
+      <None Remove="Scripts\024_create_review_edit_history.sql" />
+      <EmbeddedResource Include="Scripts\024_create_review_edit_history.sql" />
+      <None Remove="Scripts\025_create_sentiment_analysis.sql" />
+      <EmbeddedResource Include="Scripts\025_create_sentiment_analysis.sql" />
+      <None Remove="Scripts\026_create_external_review_integration.sql" />
+      <EmbeddedResource Include="Scripts\026_create_external_review_integration.sql" />
+      <None Remove="Scripts\027_create_notification_tables.sql" />
+      <EmbeddedResource Include="Scripts\027_create_notification_tables.sql" />
+      <None Remove="Scripts\028_create_performance_indexes.sql" />
+      <EmbeddedResource Include="Scripts\028_create_performance_indexes.sql" />
+      <None Remove="Scripts\029_data_migration_and_validation.sql" />
+      <EmbeddedResource Include="Scripts\029_data_migration_and_validation.sql" />
     </ItemGroup>
 
     <ItemGroup>
