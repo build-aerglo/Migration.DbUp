@@ -5,7 +5,7 @@
 -- ============================================
 -- BS-001: Business Verification Badge System
 -- ============================================
-CREATE TABLE business_verification (
+CREATE TABLE IF NOT EXISTS business_verification (
                                        id UUID PRIMARY KEY,
                                        business_id UUID NOT NULL,
 
@@ -57,13 +57,13 @@ CREATE TABLE business_verification (
                                        CONSTRAINT uk_business_verification_business UNIQUE (business_id)
 );
 
-CREATE INDEX idx_business_verification_business_id ON business_verification(business_id);
-CREATE INDEX idx_business_verification_requires_reverification ON business_verification(requires_reverification) WHERE requires_reverification = TRUE;
+CREATE INDEX IF NOT EXISTS idx_business_verification_business_id ON business_verification(business_id);
+CREATE INDEX IF NOT EXISTS idx_business_verification_requires_reverification ON business_verification(requires_reverification) WHERE requires_reverification = TRUE;
 
 -- ============================================
 -- BS-002: Subscription Plan Management
 -- ============================================
-CREATE TABLE subscription_plan (
+CREATE TABLE IF NOT EXISTS subscription_plan (
                                    id UUID PRIMARY KEY,
                                    name VARCHAR(100) NOT NULL,
                                    tier INTEGER NOT NULL DEFAULT 0, -- 0=Basic, 1=Premium, 2=Enterprise
@@ -96,18 +96,18 @@ CREATE TABLE subscription_plan (
                                    CONSTRAINT uk_subscription_plan_name UNIQUE (name)
 );
 
-CREATE INDEX idx_subscription_plan_tier ON subscription_plan(tier);
-CREATE INDEX idx_subscription_plan_is_active ON subscription_plan(is_active) WHERE is_active = TRUE;
+CREATE INDEX IF NOT EXISTS idx_subscription_plan_tier ON subscription_plan(tier);
+CREATE INDEX IF NOT EXISTS idx_subscription_plan_is_active ON subscription_plan(is_active) WHERE is_active = TRUE;
 
 -- Insert default subscription plans
 INSERT INTO subscription_plan (id, name, tier, description, monthly_price, annual_price, monthly_reply_limit, monthly_dispute_limit, external_source_limit, user_login_limit, private_reviews_enabled, data_api_enabled, dnd_mode_enabled, auto_response_enabled, branch_comparison_enabled, competitor_comparison_enabled)
 VALUES
     (gen_random_uuid(), 'Basic', 0, 'Free plan with essential features', 0, 0, 10, 5, 1, 1, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
     (gen_random_uuid(), 'Premium', 1, 'Enhanced features for growing businesses', 15000, 150000, 120, 25, 3, 3, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE),
-    (gen_random_uuid(), 'Enterprise', 2, 'Full-featured plan for large businesses', 50000, 500000, 2147483647, 2147483647, 2147483647, 10, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE);
+    (gen_random_uuid(), 'Enterprise', 2, 'Full-featured plan for large businesses', 50000, 500000, 2147483647, 2147483647, 2147483647, 10, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE) ON CONFLICT (name) DO NOTHING;
 
 -- Business Subscription table
-CREATE TABLE business_subscription (
+CREATE TABLE IF NOT EXISTS business_subscription (
                                        id UUID PRIMARY KEY,
                                        business_id UUID NOT NULL,
                                        subscription_plan_id UUID NOT NULL,
@@ -137,14 +137,14 @@ CREATE TABLE business_subscription (
                                        CONSTRAINT uk_business_subscription_business UNIQUE (business_id)
 );
 
-CREATE INDEX idx_business_subscription_business_id ON business_subscription(business_id);
-CREATE INDEX idx_business_subscription_status ON business_subscription(status);
-CREATE INDEX idx_business_subscription_end_date ON business_subscription(end_date);
+CREATE INDEX IF NOT EXISTS idx_business_subscription_business_id ON business_subscription(business_id);
+CREATE INDEX IF NOT EXISTS idx_business_subscription_status ON business_subscription(status);
+CREATE INDEX IF NOT EXISTS idx_business_subscription_end_date ON business_subscription(end_date);
 
 -- ============================================
 -- BS-003: Multi-User Access (Parent/Child)
 -- ============================================
-CREATE TABLE business_user (
+CREATE TABLE IF NOT EXISTS business_user (
                                id UUID PRIMARY KEY,
                                business_id UUID NOT NULL,
                                user_id UUID,
@@ -179,16 +179,16 @@ CREATE TABLE business_user (
                                CONSTRAINT uk_business_user_email_business UNIQUE (business_id, email)
 );
 
-CREATE INDEX idx_business_user_business_id ON business_user(business_id);
-CREATE INDEX idx_business_user_user_id ON business_user(user_id) WHERE user_id IS NOT NULL;
-CREATE INDEX idx_business_user_email ON business_user(email);
-CREATE INDEX idx_business_user_invitation_token ON business_user(invitation_token) WHERE invitation_token IS NOT NULL;
-CREATE INDEX idx_business_user_status ON business_user(status);
+CREATE INDEX IF NOT EXISTS idx_business_user_business_id ON business_user(business_id);
+CREATE INDEX IF NOT EXISTS idx_business_user_user_id ON business_user(user_id) WHERE user_id IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_business_user_email ON business_user(email);
+CREATE INDEX IF NOT EXISTS idx_business_user_invitation_token ON business_user(invitation_token) WHERE invitation_token IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_business_user_status ON business_user(status);
 
 -- ============================================
 -- BS-004: Auto-Response Templates
 -- ============================================
-CREATE TABLE auto_response_template (
+CREATE TABLE IF NOT EXISTS auto_response_template (
                                         id UUID PRIMARY KEY,
                                         business_id UUID NOT NULL,
 
@@ -223,15 +223,15 @@ CREATE TABLE auto_response_template (
                                             )
 );
 
-CREATE INDEX idx_auto_response_template_business_id ON auto_response_template(business_id);
-CREATE INDEX idx_auto_response_template_sentiment ON auto_response_template(sentiment);
-CREATE INDEX idx_auto_response_template_is_active ON auto_response_template(is_active) WHERE is_active = TRUE;
-CREATE INDEX idx_auto_response_template_is_default ON auto_response_template(is_default) WHERE is_default = TRUE;
+CREATE INDEX IF NOT EXISTS idx_auto_response_template_business_id ON auto_response_template(business_id);
+CREATE INDEX IF NOT EXISTS idx_auto_response_template_sentiment ON auto_response_template(sentiment);
+CREATE INDEX IF NOT EXISTS idx_auto_response_template_is_active ON auto_response_template(is_active) WHERE is_active = TRUE;
+CREATE INDEX IF NOT EXISTS idx_auto_response_template_is_default ON auto_response_template(is_default) WHERE is_default = TRUE;
 
 -- ============================================
 -- BS-007: Business Comparison Analytics
 -- ============================================
-CREATE TABLE business_analytics (
+CREATE TABLE IF NOT EXISTS business_analytics (
                                     id UUID PRIMARY KEY,
                                     business_id UUID NOT NULL,
 
@@ -275,12 +275,12 @@ CREATE TABLE business_analytics (
                                     CONSTRAINT uk_business_analytics_period UNIQUE (business_id, period_start, period_end, period_type)
 );
 
-CREATE INDEX idx_business_analytics_business_id ON business_analytics(business_id);
-CREATE INDEX idx_business_analytics_period ON business_analytics(period_start, period_end);
-CREATE INDEX idx_business_analytics_period_type ON business_analytics(period_type);
+CREATE INDEX IF NOT EXISTS idx_business_analytics_business_id ON business_analytics(business_id);
+CREATE INDEX IF NOT EXISTS idx_business_analytics_period ON business_analytics(period_start, period_end);
+CREATE INDEX IF NOT EXISTS idx_business_analytics_period_type ON business_analytics(period_type);
 
 -- Branch Comparison Snapshot
-CREATE TABLE branch_comparison_snapshot (
+CREATE TABLE IF NOT EXISTS branch_comparison_snapshot (
                                             id UUID PRIMARY KEY,
                                             parent_business_id UUID NOT NULL,
                                             snapshot_date TIMESTAMPTZ NOT NULL,
@@ -300,11 +300,11 @@ CREATE TABLE branch_comparison_snapshot (
                                             CONSTRAINT fk_branch_comparison_parent FOREIGN KEY (parent_business_id) REFERENCES business(id) ON DELETE CASCADE
 );
 
-CREATE INDEX idx_branch_comparison_parent_id ON branch_comparison_snapshot(parent_business_id);
-CREATE INDEX idx_branch_comparison_snapshot_date ON branch_comparison_snapshot(snapshot_date);
+CREATE INDEX IF NOT EXISTS idx_branch_comparison_parent_id ON branch_comparison_snapshot(parent_business_id);
+CREATE INDEX IF NOT EXISTS idx_branch_comparison_snapshot_date ON branch_comparison_snapshot(snapshot_date);
 
 -- Competitor Comparison
-CREATE TABLE competitor_comparison (
+CREATE TABLE IF NOT EXISTS competitor_comparison (
                                        id UUID PRIMARY KEY,
                                        business_id UUID NOT NULL,
                                        competitor_business_id UUID NOT NULL,
@@ -328,11 +328,11 @@ CREATE TABLE competitor_comparison (
                                        CONSTRAINT chk_different_businesses CHECK (business_id != competitor_business_id)
     );
 
-CREATE INDEX idx_competitor_comparison_business_id ON competitor_comparison(business_id);
-CREATE INDEX idx_competitor_comparison_is_active ON competitor_comparison(is_active) WHERE is_active = TRUE;
+CREATE INDEX IF NOT EXISTS idx_competitor_comparison_business_id ON competitor_comparison(business_id);
+CREATE INDEX IF NOT EXISTS idx_competitor_comparison_is_active ON competitor_comparison(is_active) WHERE is_active = TRUE;
 
 -- Competitor Comparison Snapshot
-CREATE TABLE competitor_comparison_snapshot (
+CREATE TABLE IF NOT EXISTS competitor_comparison_snapshot (
                                                 id UUID PRIMARY KEY,
                                                 business_id UUID NOT NULL,
                                                 snapshot_date TIMESTAMPTZ NOT NULL,
@@ -352,13 +352,13 @@ CREATE TABLE competitor_comparison_snapshot (
                                                 CONSTRAINT fk_competitor_snapshot_business FOREIGN KEY (business_id) REFERENCES business(id) ON DELETE CASCADE
 );
 
-CREATE INDEX idx_competitor_snapshot_business_id ON competitor_comparison_snapshot(business_id);
-CREATE INDEX idx_competitor_snapshot_date ON competitor_comparison_snapshot(snapshot_date);
+CREATE INDEX IF NOT EXISTS idx_competitor_snapshot_business_id ON competitor_comparison_snapshot(business_id);
+CREATE INDEX IF NOT EXISTS idx_competitor_snapshot_date ON competitor_comparison_snapshot(snapshot_date);
 
 -- ============================================
 -- BS-008: Unclaimed Business Management
 -- ============================================
-CREATE TABLE business_claim_request (
+CREATE TABLE IF NOT EXISTS business_claim_request (
                                         id UUID PRIMARY KEY,
                                         business_id UUID NOT NULL,
                                         claimant_user_id UUID,
@@ -406,16 +406,16 @@ CREATE TABLE business_claim_request (
                                         CONSTRAINT fk_business_claim_request_business FOREIGN KEY (business_id) REFERENCES business(id) ON DELETE CASCADE
 );
 
-CREATE INDEX idx_business_claim_request_business_id ON business_claim_request(business_id);
-CREATE INDEX idx_business_claim_request_status ON business_claim_request(status);
-CREATE INDEX idx_business_claim_request_priority ON business_claim_request(priority);
-CREATE INDEX idx_business_claim_request_expected_review ON business_claim_request(expected_review_by);
-CREATE INDEX idx_business_claim_request_is_escalated ON business_claim_request(is_escalated) WHERE is_escalated = TRUE;
+CREATE INDEX IF NOT EXISTS idx_business_claim_request_business_id ON business_claim_request(business_id);
+CREATE INDEX IF NOT EXISTS idx_business_claim_request_status ON business_claim_request(status);
+CREATE INDEX IF NOT EXISTS idx_business_claim_request_priority ON business_claim_request(priority);
+CREATE INDEX IF NOT EXISTS idx_business_claim_request_expected_review ON business_claim_request(expected_review_by);
+CREATE INDEX IF NOT EXISTS idx_business_claim_request_is_escalated ON business_claim_request(is_escalated) WHERE is_escalated = TRUE;
 
 -- ============================================
 -- External Source Integration
 -- ============================================
-CREATE TABLE external_source (
+CREATE TABLE IF NOT EXISTS external_source (
                                  id UUID PRIMARY KEY,
                                  business_id UUID NOT NULL,
 
@@ -454,9 +454,9 @@ CREATE TABLE external_source (
                                  CONSTRAINT uk_external_source_business_type UNIQUE (business_id, source_type)
 );
 
-CREATE INDEX idx_external_source_business_id ON external_source(business_id);
-CREATE INDEX idx_external_source_status ON external_source(status);
-CREATE INDEX idx_external_source_next_sync ON external_source(next_sync_at) WHERE auto_sync_enabled = TRUE AND status = 1;
+CREATE INDEX IF NOT EXISTS idx_external_source_business_id ON external_source(business_id);
+CREATE INDEX IF NOT EXISTS idx_external_source_status ON external_source(status);
+CREATE INDEX IF NOT EXISTS idx_external_source_next_sync ON external_source(next_sync_at) WHERE auto_sync_enabled = TRUE AND status = 1;
 
 -- ============================================
 -- BS-005 & BS-006: Update business_settings table
