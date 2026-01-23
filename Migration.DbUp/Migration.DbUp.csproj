@@ -1,72 +1,122 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <OutputType>Exe</OutputType>
-        <TargetFramework>net9.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <None Remove="Scripts\001_enable_extensions_and_functions.sql" />
-      <EmbeddedResource Include="Scripts\001_enable_extensions_and_functions.sql" />
-      <None Remove="Scripts\002_create_user_tables.sql" />
-      <EmbeddedResource Include="Scripts\002_create_user_tables.sql" />
-      <None Remove="Scripts\003_create_business_tables.sql" />
-      <EmbeddedResource Include="Scripts\003_create_business_tables.sql" />
-      <None Remove="Scripts\004_seed_data.sql" />
-      <None Remove="Scripts\004_create_review_tables.sql" />
-      <EmbeddedResource Include="Scripts\004_create_review_tables.sql" />
-      <None Remove="Scripts\005_seed_data.sql" />
-      <EmbeddedResource Include="Scripts\005_seed_data.sql" />
-      <None Remove="Scripts\007_create_user_settings_tables.sql" />
-      <EmbeddedResource Include="Scripts\007_create_user_settings_tables.sql" />
-      <None Remove="Scripts\006_11_5_2025_8_29_business_settings_table.sql" />
-      <EmbeddedResource Include="Scripts\006_11_5_2025_8_29_business_settings_table.sql" />
-      <None Remove="Scripts\008_11_17_add_review_validation_columns.sql" />
-      <EmbeddedResource Include="Scripts\008_11_17_add_review_validation_columns.sql" />
-      <None Remove="Scripts\008_create_categories.sql" />
-      <None Remove="Scripts\009_create_tags.sql" />
-      <None Remove="Scripts\010_add_more_tags.sql" />
-      <None Remove="Scripts\009_create_business_social_and_tags_tables.sql" />
-      <EmbeddedResource Include="Scripts\009_create_business_social_and_tags_tables.sql" />
-      <None Remove="Scripts\010_create_business_claims_table.sql" />
-      <None Remove="Scripts\011_Create_Social_Identities_Table.sql" />
-      <None Remove="Scripts\010_create_business_claims.sql" />
-      <None Remove="Scripts\010_add_is_guest_review_column.sql" />
-      <EmbeddedResource Include="Scripts\010_add_is_guest_review_column.sql" />
-      <None Remove="Scripts\012_Badge_Point_Verification_Point_Geolocation.sql" />
-      <None Remove="Scripts\013_SeedData_Badge_Point_Verification_Point_Geolocation.sql" />
-      <None Remove="Scripts\014_business_service_tables.sql" />
-      <None Remove="Scripts\015_add_business_branches.sql" />
-      <None Remove="Scripts\016_add_last_login_and_point_tables.sql" />
-      <None Remove="Scripts\017_update_review_schema_for_branches.sql" />
-      <None Remove="Scripts\019_enhance_review_table.sql" />
-      <EmbeddedResource Include="Scripts\019_enhance_review_table.sql" />
-      <None Remove="Scripts\020_create_business_reply_system.sql" />
-      <EmbeddedResource Include="Scripts\020_create_business_reply_system.sql" />
-      <None Remove="Scripts\021_create_dispute_management.sql" />
-      <EmbeddedResource Include="Scripts\021_create_dispute_management.sql" />
-      <None Remove="Scripts\022_create_bayesian_rating_system.sql" />
-      <EmbeddedResource Include="Scripts\022_create_bayesian_rating_system.sql" />
-      <None Remove="Scripts\023_create_helpful_vote_system.sql" />
-      <EmbeddedResource Include="Scripts\023_create_helpful_vote_system.sql" />
-      <None Remove="Scripts\024_create_review_edit_history.sql" />
-      <EmbeddedResource Include="Scripts\024_create_review_edit_history.sql" />
-      <None Remove="Scripts\025_create_sentiment_analysis.sql" />
-      <EmbeddedResource Include="Scripts\025_create_sentiment_analysis.sql" />
-      <None Remove="Scripts\026_create_external_review_integration.sql" />
-      <EmbeddedResource Include="Scripts\026_create_external_review_integration.sql" />
-      <None Remove="Scripts\027_create_notification_tables.sql" />
-      <EmbeddedResource Include="Scripts\027_create_notification_tables.sql" />
-      <None Remove="Scripts\028_create_performance_indexes.sql" />
-      <EmbeddedResource Include="Scripts\028_create_performance_indexes.sql" />
-      <None Remove="Scripts\029_data_migration_and_validation.sql" />
-      <EmbeddedResource Include="Scripts\029_data_migration_and_validation.sql" />
-    </ItemGroup>
+  <ItemGroup>
+    <None Remove="Scripts\001_enable_extensions_and_functions.sql" />
+    <EmbeddedResource Include="Scripts\001_enable_extensions_and_functions.sql" />
 
-    <ItemGroup>
-      <PackageReference Include="dbup-postgresql" Version="6.0.3" />
-    </ItemGroup>
+    <None Remove="Scripts\002_create_user_tables.sql" />
+    <EmbeddedResource Include="Scripts\002_create_user_tables.sql" />
+
+    <None Remove="Scripts\003_create_business_tables.sql" />
+    <EmbeddedResource Include="Scripts\003_create_business_tables.sql" />
+
+    <None Remove="Scripts\004_seed_data.sql" />
+    <None Remove="Scripts\004_create_review_tables.sql" />
+    <EmbeddedResource Include="Scripts\004_create_review_tables.sql" />
+
+    <None Remove="Scripts\005_seed_data.sql" />
+    <EmbeddedResource Include="Scripts\005_seed_data.sql" />
+
+    <None Remove="Scripts\006_11_5_2025_8_29_business_settings_table.sql" />
+    <EmbeddedResource Include="Scripts\006_11_5_2025_8_29_business_settings_table.sql" />
+
+    <None Remove="Scripts\007_create_user_settings_tables.sql" />
+    <EmbeddedResource Include="Scripts\007_create_user_settings_tables.sql" />
+
+    <None Remove="Scripts\008_11_17_add_review_validation_columns.sql" />
+    <EmbeddedResource Include="Scripts\008_11_17_add_review_validation_columns.sql" />
+
+    <None Remove="Scripts\008_create_categories.sql" />
+    <None Remove="Scripts\009_create_tags.sql" />
+    <None Remove="Scripts\010_add_more_tags.sql" />
+
+    <None Remove="Scripts\009_create_business_social_and_tags_tables.sql" />
+    <EmbeddedResource Include="Scripts\009_create_business_social_and_tags_tables.sql" />
+
+    <None Remove="Scripts\010_create_business_claims_table.sql" />
+    <None Remove="Scripts\011_Create_Social_Identities_Table.sql" />
+    <None Remove="Scripts\010_create_business_claims.sql" />
+
+    <None Remove="Scripts\010_add_is_guest_review_column.sql" />
+    <EmbeddedResource Include="Scripts\010_add_is_guest_review_column.sql" />
+
+    <!-- MISSING SCRIPTS - NOW ADDED -->
+    <None Remove="Scripts\011_create_business_claims.sql" />
+    <EmbeddedResource Include="Scripts\011_create_business_claims.sql" />
+
+    <None Remove="Scripts\012_create_social_identities_table.sql" />
+    <EmbeddedResource Include="Scripts\012_create_social_identities_table.sql" />
+
+    <None Remove="Scripts\012_Badge_Point_Verification_Point_Geolocation.sql" />
+    <None Remove="Scripts\013_badge_point_verification_geolocation.sql" />
+    <EmbeddedResource Include="Scripts\013_badge_point_verification_geolocation.sql" />
+
+    <None Remove="Scripts\013_SeedData_Badge_Point_Verification_Point_Geolocation.sql" />
+    <None Remove="Scripts\014_seed_badge_point_data.sql" />
+    <EmbeddedResource Include="Scripts\014_seed_badge_point_data.sql" />
+
+    <None Remove="Scripts\014_business_service_tables.sql" />
+    <None Remove="Scripts\015_business_service_features.sql" />
+    <EmbeddedResource Include="Scripts\015_business_service_features.sql" />
+
+    <None Remove="Scripts\015_add_business_branches.sql" />
+    <None Remove="Scripts\016_add_business_branches.sql" />
+    <EmbeddedResource Include="Scripts\016_add_business_branches.sql" />
+
+    <None Remove="Scripts\016_add_last_login_and_point_tables.sql" />
+    <None Remove="Scripts\017_add_last_login_and_point_tables.sql" />
+    <EmbeddedResource Include="Scripts\017_add_last_login_and_point_tables.sql" />
+
+    <None Remove="Scripts\017_update_review_schema_for_branches.sql" />
+    <None Remove="Scripts\018_update_review_schema_for_branches.sql" />
+    <EmbeddedResource Include="Scripts\018_update_review_schema_for_branches.sql" />
+
+    <None Remove="Scripts\019_enhance_review_table.sql" />
+    <EmbeddedResource Include="Scripts\019_enhance_review_table.sql" />
+
+    <None Remove="Scripts\020_create_business_reply_system.sql" />
+    <EmbeddedResource Include="Scripts\020_create_business_reply_system.sql" />
+
+    <None Remove="Scripts\021_create_dispute_management.sql" />
+    <EmbeddedResource Include="Scripts\021_create_dispute_management.sql" />
+
+    <None Remove="Scripts\022_create_bayesian_rating_system.sql" />
+    <EmbeddedResource Include="Scripts\022_create_bayesian_rating_system.sql" />
+
+    <None Remove="Scripts\023_create_helpful_vote_system.sql" />
+    <EmbeddedResource Include="Scripts\023_create_helpful_vote_system.sql" />
+
+    <None Remove="Scripts\024_create_review_edit_history.sql" />
+    <EmbeddedResource Include="Scripts\024_create_review_edit_history.sql" />
+
+    <None Remove="Scripts\025_create_sentiment_analysis.sql" />
+    <EmbeddedResource Include="Scripts\025_create_sentiment_analysis.sql" />
+
+    <None Remove="Scripts\026_create_external_review_integration.sql" />
+    <EmbeddedResource Include="Scripts\026_create_external_review_integration.sql" />
+
+    <None Remove="Scripts\027_create_notification_tables.sql" />
+    <EmbeddedResource Include="Scripts\027_create_notification_tables.sql" />
+
+    <None Remove="Scripts\028_create_performance_indexes.sql" />
+    <EmbeddedResource Include="Scripts\028_create_performance_indexes.sql" />
+
+    <None Remove="Scripts\029_data_migration_and_validation.sql" />
+    <EmbeddedResource Include="Scripts\029_data_migration_and_validation.sql" />
+
+    <None Remove="Scripts\030_create_trigger_to_update_business_column_on_business_rating_update.sql" />
+    <EmbeddedResource Include="Scripts\030_create_trigger_to_update_business_column_on_business_rating_update.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="dbup-postgresql" Version="6.0.3" />
+  </ItemGroup>
 
 </Project>
