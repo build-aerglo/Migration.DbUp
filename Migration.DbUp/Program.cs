@@ -8,7 +8,7 @@ internal abstract class Program
     static int Main(string[] args) 
     {
         var connectionString = args.FirstOrDefault()
-                               ?? "Host=localhost;Port=5432;Database=ReviewApp;Username=postgres;Password=admin";
+                               ?? "Host=localhost;Database=reviewapp;Username=prnzdiamond;Password=diamond;Include Error Detail=true";
 
         var upgrader = DeployChanges.To
             .PostgresqlDatabase(connectionString)
