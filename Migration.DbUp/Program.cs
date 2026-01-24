@@ -8,7 +8,7 @@ internal abstract class Program
     static int Main(string[] args) 
     {
         var connectionString = args.FirstOrDefault()
-                               ?? "Host=localhost;Database=reviewapp;Username=prnzdiamond;Password=diamond;Include Error Detail=true";
+                               ?? "Host=ep-long-unit-afcwfcyj-pooler.c-2.us-west-2.aws.neon.tech;Database=clereview;Username=neondb_owner;Password=npg_7CZd9OgaYmWj;SSL Mode=Require;Trust Server Certificate=True;Include Error Detail=true";
 
         var upgrader = DeployChanges.To
             .PostgresqlDatabase(connectionString)
