@@ -1,5 +1,5 @@
 -- ======================================================
--- 004 - Seed Initial Data
+-- 005 - Seed Initial Data
 -- ======================================================
 
 INSERT INTO public.category (id, name) VALUES
