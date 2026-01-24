@@ -31,3 +31,9 @@ DROP CONSTRAINT IF EXISTS chk_provider;
 ALTER TABLE social_identities
     ADD CONSTRAINT chk_provider
         CHECK (provider IN ('google-oauth2', 'Facebook', 'Apple', 'GitHub', 'Twitter', 'linkedin'));
+
+
+-- Add businessAddress to business Table
+ALTER TABLE public.business
+    ADD COLUMN IF NOT EXISTS business_address TEXT;
+

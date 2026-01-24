@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Scripts\031_add_unique_constraints_and_update_provider_check.sql" />
     <None Remove="Scripts\001_enable_extensions_and_functions.sql" />
     <EmbeddedResource Include="Scripts\001_enable_extensions_and_functions.sql" />
 
@@ -114,7 +115,6 @@
     <None Remove="Scripts\030_create_trigger_to_update_business_column_on_business_rating_update.sql" />
     <EmbeddedResource Include="Scripts\030_create_trigger_to_update_business_column_on_business_rating_update.sql" />
     <None Remove="031_add_unique_constraints_and_update_provider_check.sql" />
-    <EmbeddedResource Include="031_add_unique_constraints_and_update_provider_check.sql" />
   </ItemGroup>
 
   <ItemGroup>
