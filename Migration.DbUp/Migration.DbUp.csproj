@@ -115,6 +115,8 @@
     <None Remove="Scripts\030_create_trigger_to_update_business_column_on_business_rating_update.sql" />
     <EmbeddedResource Include="Scripts\030_create_trigger_to_update_business_column_on_business_rating_update.sql" />
     <None Remove="031_add_unique_constraints_and_update_provider_check.sql" />
+    <None Remove="Scripts\032_add_reset_and_verification_tables.sql" />
+    <EmbeddedResource Include="Scripts\032_add_reset_and_verification_tables.sql" />
   </ItemGroup>
 
   <ItemGroup>
