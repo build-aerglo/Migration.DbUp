@@ -57,3 +57,8 @@ CREATE TABLE IF NOT EXISTS public.id_verification_request (
 CREATE INDEX IF NOT EXISTS idx_verification_requests_id ON public.id_verification_request(business_id);
 CREATE INDEX IF NOT EXISTS idx_verification_requests_created_at ON public.id_verification_request(created_at);
 CREATE INDEX IF NOT EXISTS idx_verification_requests_verification_type ON public.id_verification_request(id_verification_type);
+
+ALTER TABLE public.users ADD COLUMN IF NOT EXISTS login_type VARCHAR(50);
+ALTER TABLE public.business_verification ADD COLUMN IF NOT EXISTS verification_progress DECIMAL(10, 1) DEFAULT 0;
+
+CREATE INDEX IF NOT EXISTS idx_users_login_type ON public.users(login_type);
