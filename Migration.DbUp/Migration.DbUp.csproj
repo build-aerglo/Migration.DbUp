@@ -118,6 +118,8 @@
     <None Remove="Scripts\032_add_reset_and_verification_tables.sql" />
     <EmbeddedResource Include="Scripts\032_add_reset_and_verification_tables.sql" />
     <None Remove="Scripts\033_fix_business_repository_tests.sql" />
+    <None Remove="Scripts\033_add_email_request_table.sql" />
+    <EmbeddedResource Include="Scripts\033_add_email_request_table.sql" />
   </ItemGroup>
 
   <ItemGroup>
