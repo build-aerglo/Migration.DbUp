@@ -25,9 +25,7 @@ CREATE TABLE IF NOT EXISTS public.subscription_invoice (
     status VARCHAR(50) DEFAULT 'pending',
     payment_status VARCHAR(50) DEFAULT 'pending',
     payment_url VARCHAR(1000),
-    is_annual BOOLEAN DEFAULT FALSE,
-    CONSTRAINT fk_business_id FOREIGN KEY (business_id)
-    REFERENCES public.business (id) ON DELETE CASCADE
+    is_annual BOOLEAN DEFAULT FALSE
     );
 
 CREATE INDEX idx_subscription_invoice_business_id ON subscription_invoice(business_id);
