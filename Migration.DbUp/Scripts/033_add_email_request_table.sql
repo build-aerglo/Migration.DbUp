@@ -22,7 +22,8 @@ CREATE TABLE IF NOT EXISTS public.subscription_invoice (
     platform VARCHAR(100) NOT NULL DEFAULT 'paystack',
     reference TEXT,
     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
-    status VARCHAR(50) DEFAULT 'unpaid',
+    status VARCHAR(50) DEFAULT 'pending',
+    payment_status VARCHAR(50) DEFAULT 'pending',
     payment_url VARCHAR(1000),
     is_annual BOOLEAN DEFAULT FALSE,
     CONSTRAINT fk_business_id FOREIGN KEY (business_id)
