@@ -130,6 +130,8 @@
     <EmbeddedResource Include="Scripts\037_add_opinion_mining.sql" />
     <None Remove="Scripts\038_add_bayesian_to_analytics.sql" />
     <EmbeddedResource Include="Scripts\038_add_bayesian_to_analytics.sql" />
+    <None Remove="Scripts\039_add_verification_and_summary_tables.sql" />
+    <EmbeddedResource Include="Scripts\039_add_verification_and_summary_tables.sql" />
   </ItemGroup>
 
   <ItemGroup>
