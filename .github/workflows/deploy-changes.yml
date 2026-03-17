@@ -24,5 +24,8 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release
 
-      - name: Run migrations
-        run: dotnet run --project Migration.DbUp/Migration.DbUp.csproj -- "Host=ep-long-unit-afcwfcyj-pooler.c-2.us-west-2.aws.neon.tech;Database=clereview;Username=neondb_owner;Password=npg_7CZd9OgaYmWj;SSL Mode=Require;Trust Server Certificate=True"
+      - name: Run migrations on production db
+        run: dotnet run --project Migration.DbUp/Migration.DbUp.csproj -- "Host=ep-long-unit-afcwfcyj-pooler.c-2.us-west-2.aws.neon.tech;Database=clereview;Username=neondb_owner;Password=${{ secrets.DB_PASSWORD_PROD }};SSL Mode=Require;Trust Server Certificate=True"
+
+      - name: Run migrations on test db
+        run: dotnet run --project Migration.DbUp/Migration.DbUp.csproj -- "Host=ep-long-unit-afcwfcyj-pooler.c-2.us-west-2.aws.neon.tech;Database=neondb;Username=neondb_owner;Password=${{ secrets.DB_PASSWORD_DEV }};SSL Mode=Require;Trust Server Certificate=True"
