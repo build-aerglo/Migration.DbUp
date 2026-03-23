@@ -20,5 +20,9 @@ CREATE TABLE IF NOT EXISTS public.registration_verification
     REFERENCES public.users (email) ON DELETE CASCADE
     );
 
+ALTER TABLE registration_verification
+    ADD COLUMN IF NOT EXISTS created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW();
+    
+
 CREATE INDEX IF NOT EXISTS idx_registeration_verification_email ON public.registration_verification (email);
 CREATE INDEX IF NOT EXISTS idx_registeration_verification_token ON public.registration_verification (token);
