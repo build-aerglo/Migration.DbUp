@@ -132,6 +132,8 @@
     <EmbeddedResource Include="Scripts\038_add_bayesian_to_analytics.sql" />
     <None Remove="Scripts\039_add_verification_and_summary_tables.sql" />
     <EmbeddedResource Include="Scripts\039_add_verification_and_summary_tables.sql" />
+    <None Remove="Scripts\040_add_benchmark_index.sql" />
+    <EmbeddedResource Include="Scripts\040_add_benchmark_index.sql" />
   </ItemGroup>
 
   <ItemGroup>
