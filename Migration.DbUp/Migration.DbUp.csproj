@@ -134,6 +134,8 @@
     <EmbeddedResource Include="Scripts\039_add_verification_and_summary_tables.sql" />
     <None Remove="Scripts\040_add_benchmark_index.sql" />
     <EmbeddedResource Include="Scripts\040_add_benchmark_index.sql" />
+    <None Remove="Scripts\041_update_business_claim_table.sql" />
+    <EmbeddedResource Include="Scripts\041_update_business_claim_table.sql" />
   </ItemGroup>
 
   <ItemGroup>
