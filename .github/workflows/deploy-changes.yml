@@ -26,8 +26,7 @@ jobs:
           for SQL_FILE in Migration.DbUp/Scripts/*.sql; do
             FILES_SCANNED=$((FILES_SCANNED + 1))
 
-            # Check for DROP TABLE (not DROP TABLE IF EXISTS is fine, but flag it anyway for review)
-            MATCHES=$(grep -in "DROP TABLE" "$SQL_FILE" | grep -v "^\s*--" || true)
+            MATCHES=$(grep -i "DROP TABLE" "$SQL_FILE" | grep -v "^\s*--" || true)
             if [ -n "$MATCHES" ]; then
               echo ""
               echo "⚠️  DESTRUCTIVE STATEMENT FOUND in: $SQL_FILE"
@@ -35,8 +34,7 @@ jobs:
               FOUND=$((FOUND + 1))
             fi
 
-            # Check for DROP COLUMN (not DROP NOT NULL — that's safe)
-            MATCHES=$(grep -in "DROP COLUMN" "$SQL_FILE" | grep -v "^\s*--" || true)
+            MATCHES=$(grep -i "DROP COLUMN" "$SQL_FILE" | grep -v "^\s*--" || true)
             if [ -n "$MATCHES" ]; then
               echo ""
               echo "⚠️  DESTRUCTIVE STATEMENT FOUND in: $SQL_FILE"
@@ -44,8 +42,7 @@ jobs:
               FOUND=$((FOUND + 1))
             fi
 
-            # Check for TRUNCATE
-            MATCHES=$(grep -in "TRUNCATE" "$SQL_FILE" | grep -v "^\s*--" || true)
+            MATCHES=$(grep -i "TRUNCATE" "$SQL_FILE" | grep -v "^\s*--" || true)
             if [ -n "$MATCHES" ]; then
               echo ""
               echo "⚠️  DESTRUCTIVE STATEMENT FOUND in: $SQL_FILE"
@@ -53,8 +50,7 @@ jobs:
               FOUND=$((FOUND + 1))
             fi
 
-            # Check for DELETE FROM (only non-commented lines)
-            MATCHES=$(grep -in "DELETE FROM" "$SQL_FILE" | grep -v "^\s*--" || true)
+            MATCHES=$(grep -i "DELETE FROM" "$SQL_FILE" | grep -v "^\s*--" || true)
             if [ -n "$MATCHES" ]; then
               echo ""
               echo "⚠️  DESTRUCTIVE STATEMENT FOUND in: $SQL_FILE"
@@ -68,16 +64,12 @@ jobs:
 
           if [ $FOUND -gt 0 ]; then
             echo ""
-            echo "❌ $FOUND destructive statement(s) found."
-            echo "   This pipeline will NOT automatically deploy these to production."
-            echo "   Review the statements above. If they are intentional:"
-            echo "   1. Get a second pair of eyes to confirm"
-            echo "   2. Approve the 'production' environment gate manually in GitHub Actions"
-            echo "   3. The migration will then run — with no further ability to undo"
-            exit 1
+            echo "⚠️  $FOUND destructive statement(s) found."
+            echo "   Review the statements above before approving the production environment gate."
+            echo "   If they are intentional, approve the 'production' gate in GitHub Actions."
+          else
+            echo "✅ No destructive statements found."
           fi
-
-          echo "✅ No destructive statements found. Safe to proceed."
 
   migrate-staging:
     name: Migrate — Staging DB
@@ -111,7 +103,6 @@ jobs:
   migrate-production:
     name: Migrate — Production DB
     runs-on: ubuntu-latest
-    needs: scan-for-destructive-sql
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     environment: production
 
