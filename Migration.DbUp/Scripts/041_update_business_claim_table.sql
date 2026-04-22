@@ -30,3 +30,7 @@ ALTER TABLE public.category
 
 ALTER TABLE public.review
     ADD COLUMN IF NOT EXISTS flagged_by VARCHAR(20);
+
+-- update business table
+ALTER TABLE public.business
+    ADD COLUMN IF NOT EXISTS business_verification_status VARCHAR(20) DEFAULT 'unverified';
