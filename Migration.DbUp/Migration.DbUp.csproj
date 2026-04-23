@@ -142,6 +142,8 @@
     <EmbeddedResource Include="Scripts\043_add_is_auto_response_to_business_reply.sql" />
     <None Remove="Scripts\044_add_new_enum_to_review_status.sql" />
     <EmbeddedResource Include="Scripts\044_add_new_enum_to_review_status.sql" />
+    <None Remove="Scripts\045_add_billing_index.sql" />
+    <EmbeddedResource Include="Scripts\045_add_billing_index.sql" />
   </ItemGroup>
 
   <ItemGroup>
