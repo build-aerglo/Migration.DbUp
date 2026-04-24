@@ -1,13 +1,81 @@
-name: Run DB Migrations
+name: Database Migrations
 
 on:
   push:
-    branches:
-      - main
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
 
 jobs:
-  migrate:
+
+  scan-for-destructive-sql:
+    name: Scan for Destructive SQL
     runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Scan SQL files for destructive statements
+        run: |
+          echo "Scanning all SQL migration files for destructive statements..."
+
+          FOUND=0
+          FILES_SCANNED=0
+
+          for SQL_FILE in Migration.DbUp/Scripts/*.sql; do
+            FILES_SCANNED=$((FILES_SCANNED + 1))
+
+            MATCHES=$(grep -i "DROP TABLE" "$SQL_FILE" | grep -v "^\s*--" || true)
+            if [ -n "$MATCHES" ]; then
+              echo ""
+              echo "⚠️  DESTRUCTIVE STATEMENT FOUND in: $SQL_FILE"
+              echo "$MATCHES"
+              FOUND=$((FOUND + 1))
+            fi
+
+            MATCHES=$(grep -i "DROP COLUMN" "$SQL_FILE" | grep -v "^\s*--" || true)
+            if [ -n "$MATCHES" ]; then
+              echo ""
+              echo "⚠️  DESTRUCTIVE STATEMENT FOUND in: $SQL_FILE"
+              echo "$MATCHES"
+              FOUND=$((FOUND + 1))
+            fi
+
+            MATCHES=$(grep -i "TRUNCATE" "$SQL_FILE" | grep -v "^\s*--" || true)
+            if [ -n "$MATCHES" ]; then
+              echo ""
+              echo "⚠️  DESTRUCTIVE STATEMENT FOUND in: $SQL_FILE"
+              echo "$MATCHES"
+              FOUND=$((FOUND + 1))
+            fi
+
+            MATCHES=$(grep -i "DELETE FROM" "$SQL_FILE" | grep -v "^\s*--" || true)
+            if [ -n "$MATCHES" ]; then
+              echo ""
+              echo "⚠️  DESTRUCTIVE STATEMENT FOUND in: $SQL_FILE"
+              echo "$MATCHES"
+              FOUND=$((FOUND + 1))
+            fi
+          done
+
+          echo ""
+          echo "Scanned $FILES_SCANNED SQL files."
+
+          if [ $FOUND -gt 0 ]; then
+            echo ""
+            echo "⚠️  $FOUND destructive statement(s) found."
+            echo "   Review the statements above before approving the production environment gate."
+            echo "   If they are intentional, approve the 'production' gate in GitHub Actions."
+          else
+            echo "✅ No destructive statements found."
+          fi
+
+  migrate-staging:
+    name: Migrate — Staging DB
+    runs-on: ubuntu-latest
+    needs: scan-for-destructive-sql
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
 
     steps:
       - name: Checkout repo
@@ -16,7 +84,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "8.0.x"
+          dotnet-version: '9.0.x'
 
       - name: Restore
         run: dotnet restore
@@ -24,8 +92,39 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release
 
-      - name: Run migrations on production db
-        run: dotnet run --project Migration.DbUp/Migration.DbUp.csproj -- "Host=ep-long-unit-afcwfcyj-pooler.c-2.us-west-2.aws.neon.tech;Database=clereview;Username=neondb_owner;Password=${{ secrets.DB_PASSWORD_PROD }};SSL Mode=Require;Trust Server Certificate=True"
+      - name: Run migrations on staging DB (neondb)
+        run: |
+          echo "Running migrations on staging database..."
+          dotnet run \
+            --project Migration.DbUp/Migration.DbUp.csproj \
+            -- "Host=ep-long-unit-afcwfcyj-pooler.c-2.us-west-2.aws.neon.tech;Database=neondb;Username=neondb_owner;Password=${{ secrets.DB_PASSWORD_DEV }};SSL Mode=Require;Trust Server Certificate=True"
+          echo "✅ Staging migrations complete"
 
-      - name: Run migrations on test db
-        run: dotnet run --project Migration.DbUp/Migration.DbUp.csproj -- "Host=ep-long-unit-afcwfcyj-pooler.c-2.us-west-2.aws.neon.tech;Database=neondb;Username=neondb_owner;Password=${{ secrets.DB_PASSWORD_DEV }};SSL Mode=Require;Trust Server Certificate=True"
+  migrate-production:
+    name: Migrate — Production DB
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    environment: production
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release
+
+      - name: Run migrations on production DB (clereview)
+        run: |
+          echo "Running migrations on PRODUCTION database..."
+          dotnet run \
+            --project Migration.DbUp/Migration.DbUp.csproj \
+            -- "Host=ep-long-unit-afcwfcyj-pooler.c-2.us-west-2.aws.neon.tech;Database=clereview;Username=neondb_owner;Password=${{ secrets.DB_PASSWORD_PROD }};SSL Mode=Require;Trust Server Certificate=True"
+          echo "✅ Production migrations complete"
