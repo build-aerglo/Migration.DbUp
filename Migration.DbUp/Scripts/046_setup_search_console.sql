@@ -18,7 +18,7 @@
 -- CREATE INDEX IF NOT EXISTS idx_scd_query     ON public.search_console_data (query);
 -- CREATE INDEX IF NOT EXISTS idx_scd_page      ON public.search_console_data (page);
 
-CREATE TABLE IF NOT EXIST public.search_console_snapshots (
+CREATE TABLE IF NOT EXISTS public.search_console_snapshots (
                                           id            UUID PRIMARY KEY,
                                           site_url      TEXT        NOT NULL,
                                           snapshot_date DATE        NOT NULL,
