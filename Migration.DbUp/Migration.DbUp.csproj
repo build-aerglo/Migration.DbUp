@@ -144,6 +144,10 @@
     <EmbeddedResource Include="Scripts\044_add_new_enum_to_review_status.sql" />
     <None Remove="Scripts\045_add_billing_index.sql" />
     <EmbeddedResource Include="Scripts\045_add_billing_index.sql" />
+    <None Remove="Scripts\046_setup_search_console.sql" />
+    <EmbeddedResource Include="Scripts\046_setup_search_console.sql" />
+    <None Remove="Scripts\047_deferred_auth_verification.sql" />
+    <EmbeddedResource Include="Scripts\047_deferred_auth_verification.sql" />
   </ItemGroup>
 
   <ItemGroup>
