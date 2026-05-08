@@ -148,6 +148,14 @@
     <EmbeddedResource Include="Scripts\046_setup_search_console.sql" />
     <None Remove="Scripts\047_deferred_auth_verification.sql" />
     <EmbeddedResource Include="Scripts\047_deferred_auth_verification.sql" />
+    <None Remove="Scripts\051_business_support_moderation.sql" />
+    <EmbeddedResource Include="Scripts\051_business_support_moderation.sql" />
+    <None Remove="Scripts\048_user_moderation.sql" />
+    <EmbeddedResource Include="Scripts\048_user_moderation.sql" />
+    <None Remove="Scripts\049_support_user_permissions.sql" />
+    <EmbeddedResource Include="Scripts\049_support_user_permissions.sql" />
+    <None Remove="Scripts\050_support_action_log.sql" />
+    <EmbeddedResource Include="Scripts\050_support_action_log.sql" />
   </ItemGroup>
 
   <ItemGroup>
