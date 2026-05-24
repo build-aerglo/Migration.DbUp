@@ -166,6 +166,8 @@
     <EmbeddedResource Include="Scripts\055_google_oauth_extensions.sql" />
     <None Remove="Scripts\056_sentiment_stats_function.sql" />
     <EmbeddedResource Include="Scripts\056_sentiment_stats_function.sql" />
+    <None Remove="Scripts\057_pending_oauth_connection.sql" />
+    <EmbeddedResource Include="Scripts\057_pending_oauth_connection.sql" />
   </ItemGroup>
 
   <ItemGroup>
