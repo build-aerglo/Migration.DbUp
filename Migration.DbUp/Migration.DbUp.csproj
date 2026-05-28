@@ -168,6 +168,9 @@
     <EmbeddedResource Include="Scripts\056_sentiment_stats_function.sql" />
     <None Remove="Scripts\057_pending_oauth_connection.sql" />
     <EmbeddedResource Include="Scripts\057_pending_oauth_connection.sql" />
+
+    <None Remove="Scripts\058_redemption_hardening.sql" />
+    <EmbeddedResource Include="Scripts\058_redemption_hardening.sql" />
   </ItemGroup>
 
   <ItemGroup>
