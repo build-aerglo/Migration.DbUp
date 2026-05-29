@@ -159,7 +159,6 @@
     <None Remove="Scripts\052_add_business_ranking.sql" />
     <EmbeddedResource Include="Scripts\052_add_business_ranking.sql" />
     <None Remove="Scripts\053_ads_tables.sql" />
-    <EmbeddedResource Include="Scripts\053_ads_tables.sql" />
     <None Remove="Scripts\053_update_business_rating_trigger_function.sql" />
     <EmbeddedResource Include="Scripts\053_update_business_rating_trigger_function.sql" />
     <None Remove="Scripts\054_update_business_review_count.sql" />
