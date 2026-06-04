@@ -158,19 +158,22 @@
     <EmbeddedResource Include="Scripts\050_support_action_log.sql" />
     <None Remove="Scripts\052_add_business_ranking.sql" />
     <EmbeddedResource Include="Scripts\052_add_business_ranking.sql" />
-    <None Remove="Scripts\053_platform_source_config.sql" />
-    <EmbeddedResource Include="Scripts\053_platform_source_config.sql" />
-    <None Remove="Scripts\054_subscription_sync_limits.sql" />
-    <EmbeddedResource Include="Scripts\054_subscription_sync_limits.sql" />
-    <None Remove="Scripts\055_google_oauth_extensions.sql" />
-    <EmbeddedResource Include="Scripts\055_google_oauth_extensions.sql" />
-    <None Remove="Scripts\056_sentiment_stats_function.sql" />
-    <EmbeddedResource Include="Scripts\056_sentiment_stats_function.sql" />
-    <None Remove="Scripts\057_pending_oauth_connection.sql" />
-    <EmbeddedResource Include="Scripts\057_pending_oauth_connection.sql" />
+    <None Remove="Scripts\060_platform_source_config.sql" />
+    <EmbeddedResource Include="Scripts\060_platform_source_config.sql" />
+    <None Remove="Scripts\061_subscription_sync_limits.sql" />
+    <EmbeddedResource Include="Scripts\061_subscription_sync_limits.sql" />
+    <None Remove="Scripts\062_google_oauth_extensions.sql" />
+    <EmbeddedResource Include="Scripts\062_google_oauth_extensions.sql" />
+    <None Remove="Scripts\063_sentiment_stats_function.sql" />
+    <EmbeddedResource Include="Scripts\063_sentiment_stats_function.sql" />
+    <None Remove="Scripts\064_pending_oauth_connection.sql" />
+    <EmbeddedResource Include="Scripts\064_pending_oauth_connection.sql" />
 
-    <None Remove="Scripts\058_redemption_hardening.sql" />
-    <EmbeddedResource Include="Scripts\058_redemption_hardening.sql" />
+    <None Remove="Scripts\065_redemption_hardening.sql" />
+    <EmbeddedResource Include="Scripts\065_redemption_hardening.sql" />
+
+    <None Remove="Scripts\066_two_axis_visibility.sql" />
+    <EmbeddedResource Include="Scripts\066_two_axis_visibility.sql" />
   </ItemGroup>
 
   <ItemGroup>
