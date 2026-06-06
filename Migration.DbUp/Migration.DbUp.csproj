@@ -175,6 +175,9 @@
     <None Remove="Scripts\066_two_axis_visibility.sql" />
     <EmbeddedResource Include="Scripts\066_two_axis_visibility.sql" />
 
+    <None Remove="Scripts\067_external_review_stats.sql" />
+    <EmbeddedResource Include="Scripts\067_external_review_stats.sql" />
+
     <None Remove="Scripts\068_redemption_otp_session.sql" />
     <EmbeddedResource Include="Scripts\068_redemption_otp_session.sql" />
   </ItemGroup>
