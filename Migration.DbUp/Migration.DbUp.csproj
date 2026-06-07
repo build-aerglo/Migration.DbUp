@@ -180,6 +180,9 @@
 
     <None Remove="Scripts\068_redemption_otp_session.sql" />
     <EmbeddedResource Include="Scripts\068_redemption_otp_session.sql" />
+
+    <None Remove="Scripts\069_sync_policy_config.sql" />
+    <EmbeddedResource Include="Scripts\069_sync_policy_config.sql" />
   </ItemGroup>
 
   <ItemGroup>
