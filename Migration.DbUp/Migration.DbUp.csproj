@@ -184,6 +184,9 @@
 
     <None Remove="Scripts\069_sync_policy_config.sql" />
     <EmbeddedResource Include="Scripts\069_sync_policy_config.sql" />
+
+    <None Remove="Scripts\070_external_audit_log.sql" />
+    <EmbeddedResource Include="Scripts\070_external_audit_log.sql" />
   </ItemGroup>
 
   <ItemGroup>
