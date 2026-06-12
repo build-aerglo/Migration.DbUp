@@ -62,3 +62,4 @@ CREATE INDEX IF NOT EXISTS idx_ad_booking_records_status
 ALTER TABLE public.ad_payments ADD COLUMN IF NOT EXISTS manager_id UUID;
 
 CREATE INDEX IF NOT EXISTS idx_ad_payments_manager_id ON public.ad_payments(manager_id);
+ 
