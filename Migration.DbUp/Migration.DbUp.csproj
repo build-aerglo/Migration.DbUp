@@ -164,6 +164,8 @@
     <EmbeddedResource Include="Scripts\054_update_business_rreview_count.sql" />
     <None Remove="Scripts\055_update_branch_and_ads_table.sql" />
     <EmbeddedResource Include="Scripts\055_update_branch_and_ads_table.sql" />
+    <None Remove="Scripts\056_favourite_business_setup.sql" />
+    <EmbeddedResource Include="Scripts\056_favourite_business_setup.sql" />
   </ItemGroup>
 
   <ItemGroup>
