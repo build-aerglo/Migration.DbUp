@@ -5,6 +5,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UserSecretsId>b2e7d8c4-3a51-4f29-9d6e-7c8a1b2f3e4d</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -166,10 +167,42 @@
     <EmbeddedResource Include="Scripts\055_update_branch_and_ads_table.sql" />
     <None Remove="Scripts\056_favourite_business_setup.sql" />
     <EmbeddedResource Include="Scripts\056_favourite_business_setup.sql" />
+
+    <None Remove="Scripts\060_platform_source_config.sql" />
+    <EmbeddedResource Include="Scripts\060_platform_source_config.sql" />
+    <None Remove="Scripts\061_subscription_sync_limits.sql" />
+    <EmbeddedResource Include="Scripts\061_subscription_sync_limits.sql" />
+    <None Remove="Scripts\062_google_oauth_extensions.sql" />
+    <EmbeddedResource Include="Scripts\062_google_oauth_extensions.sql" />
+    <None Remove="Scripts\063_sentiment_stats_function.sql" />
+    <EmbeddedResource Include="Scripts\063_sentiment_stats_function.sql" />
+    <None Remove="Scripts\064_pending_oauth_connection.sql" />
+    <EmbeddedResource Include="Scripts\064_pending_oauth_connection.sql" />
+
+    <None Remove="Scripts\065_redemption_hardening.sql" />
+    <EmbeddedResource Include="Scripts\065_redemption_hardening.sql" />
+
+    <None Remove="Scripts\066_two_axis_visibility.sql" />
+    <EmbeddedResource Include="Scripts\066_two_axis_visibility.sql" />
+
+    <None Remove="Scripts\067_external_review_stats.sql" />
+    <EmbeddedResource Include="Scripts\067_external_review_stats.sql" />
+
+    <None Remove="Scripts\068_redemption_otp_session.sql" />
+    <EmbeddedResource Include="Scripts\068_redemption_otp_session.sql" />
+
+    <None Remove="Scripts\069_sync_policy_config.sql" />
+    <EmbeddedResource Include="Scripts\069_sync_policy_config.sql" />
+
+    <None Remove="Scripts\070_external_audit_log.sql" />
+    <EmbeddedResource Include="Scripts\070_external_audit_log.sql" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="dbup-postgresql" Version="6.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.0" />
   </ItemGroup>
 
 </Project>
