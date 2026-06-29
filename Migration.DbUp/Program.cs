@@ -14,12 +14,16 @@ internal abstract class Program
             .Build();
 
         // Resolution order: explicit CLI arg → ConnectionStrings:PostgresConnection from a
-        // local user-secret or env var (ConnectionStrings__PostgresConnection) → shared Neon
-        // default. Lets a developer target a local Postgres without editing this tracked file.
+        // local user-secret or the ConnectionStrings__PostgresConnection environment variable.
+        // No connection string is hardcoded here — provide one of the above (CI passes it from a
+        // GitHub Actions secret; locally use `dotnet user-secrets` or the env var).
         var connectionString =
             args.FirstOrDefault()
             ?? config.GetConnectionString("PostgresConnection")
-            ?? "Host=ep-long-unit-afcwfcyj-pooler.c-2.us-west-2.aws.neon.tech;Database=neondb;Username=neondb_owner;Password=REMOVED;SSL Mode=Require";
+            ?? throw new InvalidOperationException(
+                "No PostgreSQL connection string provided. Pass it as the first CLI argument, or set " +
+                "ConnectionStrings:PostgresConnection via `dotnet user-secrets` or the " +
+                "ConnectionStrings__PostgresConnection environment variable.");
 
         var upgrader = DeployChanges.To
             .PostgresqlDatabase(connectionString)
