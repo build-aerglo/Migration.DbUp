@@ -6,7 +6,7 @@ namespace Migration.DbUp;
 
 internal abstract class Program
 {
-    static int Main(string[] args)
+    static int Main(string[] args) 
     {
         var config = new ConfigurationBuilder()
             .AddUserSecrets(typeof(Program).Assembly, optional: true)
