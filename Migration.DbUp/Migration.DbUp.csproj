@@ -198,6 +198,8 @@
     <EmbeddedResource Include="Scripts\070_external_audit_log.sql" />
     <None Remove="Scripts\071_add_mass_mail_business_tables.sql" />
     <EmbeddedResource Include="Scripts\071_add_mass_mail_business_tables.sql" />
+    <None Remove="Scripts\072_update_business_referral_setup.sql" />
+    <EmbeddedResource Include="Scripts\072_update_business_referral_setup.sql" />
   </ItemGroup>
 
   <ItemGroup>
